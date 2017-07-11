@@ -17,7 +17,7 @@ class Plugin {
 
 	public static function getHooks() {
 		return [
-			//'system.settings' => [__CLASS__, 'getSettings'],
+			'system.settings' => [__CLASS__, 'getSettings'],
 			//'ui.menu' => [__CLASS__, 'getMenu'],
 		];
 	}
@@ -41,8 +41,10 @@ class Plugin {
 
 	public static function getSettings(GenericEvent $event) {
 		$settings = $event->getSubject();
-		$settings->add_text_setting('General', 'Amazon', 'abuse_imap_user', 'Amazon IMAP User:', 'Amazon IMAP Username', ABUSE_IMAP_USER);
-		$settings->add_text_setting('General', 'Amazon', 'abuse_imap_pass', 'Amazon IMAP Pass:', 'Amazon IMAP Password', ABUSE_IMAP_PASS);
+		$settings->add_radio_setting('Billing', 'Amazon', 'amazon_checkout_enabled', 'Enable Amazon Checkout', 'Enable Amazon Checkout', AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
+		$settings->add_dropdown_setting('Billing', 'Amazon', 'amazon_sandbox', 'Use Sandbox/Test Environment', 'Use Sandbox/Test Environment', AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
+		$settings->add_text_setting('Billing', 'Amazon', 'amazon_client_id', 'Client ID', 'Client ID', (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
+		$settings->add_text_setting('Billing', 'Amazon', 'amazon_seller_id', 'Seller ID', 'Seller ID', (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
 	}
 
 }
