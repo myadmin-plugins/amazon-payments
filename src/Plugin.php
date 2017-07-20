@@ -4,6 +4,11 @@ namespace Detain\MyAdminAmazon;
 
 use Symfony\Component\EventDispatcher\GenericEvent;
 
+/**
+ * Class Plugin
+ *
+ * @package Detain\MyAdminAmazon
+ */
 class Plugin {
 
 	public static $name = 'Amazon Plugin';
@@ -11,10 +16,15 @@ class Plugin {
 	public static $help = '';
 	public static $type = 'plugin';
 
-
+	/**
+	 * Plugin constructor.
+	 */
 	public function __construct() {
 	}
 
+	/**
+	 * @return array
+	 */
 	public static function getHooks() {
 		return [
 			'system.settings' => [__CLASS__, 'getSettings'],
@@ -22,6 +32,9 @@ class Plugin {
 		];
 	}
 
+	/**
+	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
+	 */
 	public static function getMenu(GenericEvent $event) {
 		$menu = $event->getSubject();
 		if ($GLOBALS['tf']->ima == 'admin') {
@@ -31,6 +44,9 @@ class Plugin {
 		}
 	}
 
+	/**
+	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
+	 */
 	public static function getRequirements(GenericEvent $event) {
 		$loader = $event->getSubject();
 		$loader->add_requirement('class.Amazon', '/../vendor/detain/myadmin-amazon-payments/src/Amazon.php');
@@ -39,6 +55,9 @@ class Plugin {
 		$loader->add_requirement('get_abuse_licenses', '/../vendor/detain/myadmin-amazon-payments/src/abuse.inc.php');
 	}
 
+	/**
+	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
+	 */
 	public static function getSettings(GenericEvent $event) {
 		$settings = $event->getSubject();
 		$settings->add_radio_setting('Billing', 'Amazon', 'amazon_checkout_enabled', 'Enable Amazon Checkout', 'Enable Amazon Checkout', AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
