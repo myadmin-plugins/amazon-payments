@@ -12,7 +12,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 class Plugin {
 
 	public static $name = 'Amazon Plugin';
-	public static $description = 'Allows handling of Amazon emails and honeypots';
+	public static $description = 'Allows handling of Amazon based Payments through their Payment Processor/Payment System.';
 	public static $help = '';
 	public static $type = 'plugin';
 
