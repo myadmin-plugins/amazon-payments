@@ -29,6 +29,7 @@ class Plugin {
 		return [
 			'system.settings' => [__CLASS__, 'getSettings'],
 			//'ui.menu' => [__CLASS__, 'getMenu'],
+			'function.requirements' => [__CLASS__, 'getRequirements']
 		];
 	}
 
@@ -49,10 +50,9 @@ class Plugin {
 	 */
 	public static function getRequirements(GenericEvent $event) {
 		$loader = $event->getSubject();
-		$loader->add_requirement('class.Amazon', '/../vendor/detain/myadmin-amazon-payments/src/Amazon.php');
-		$loader->add_requirement('deactivate_kcare', '/../vendor/detain/myadmin-amazon-payments/src/abuse.inc.php');
-		$loader->add_requirement('deactivate_abuse', '/../vendor/detain/myadmin-amazon-payments/src/abuse.inc.php');
-		$loader->add_requirement('get_abuse_licenses', '/../vendor/detain/myadmin-amazon-payments/src/abuse.inc.php');
+		$loader->add_requirement('amazon_obtain_profile', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
+		$loader->add_requirement('amazon_wallet_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
+		$loader->add_requirement('amazon_addressbook_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 	}
 
 	/**
