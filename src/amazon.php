@@ -2,8 +2,7 @@
 	/**
 	* Amazon Functionality
 	*
-	* Last Changed: $LastChangedDate: 2016-07-22 08:30:09 -0400 (Fri, 22 Jul 2016) $
-	* @author detain
+	* @author Joe Huss <detain@interserver.net>
 	* @copyright 2017
 	* @package MyAdmin
 	* @category Billing
