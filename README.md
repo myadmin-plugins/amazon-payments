@@ -24,5 +24,5 @@ composer require detain/myadmin-amazon-payments
 
 ## License
 
-The Amazon handling plugin for MyAdmin class is licensed under the LGPL-v2 license.
+The Amazon handling plugin for MyAdmin class is licensed under the LGPL-v2.1 license.
 
