@@ -60,8 +60,8 @@ class Plugin {
 	 */
 	public static function getSettings(GenericEvent $event) {
 		$settings = $event->getSubject();
-		$settings->add_radio_setting('Billing', 'Amazon', 'amazon_checkout_enabled', 'Enable Amazon Checkout', 'Enable Amazon Checkout', AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
-		$settings->add_dropdown_setting('Billing', 'Amazon', 'amazon_sandbox', 'Use Sandbox/Test Environment', 'Use Sandbox/Test Environment', AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
+		$settings->add_radio_setting('Billing', 'Amazon', 'amazon_checkout_enabled', 'Enable Amazon Checkout', 'Enable Amazon Checkout', AMAZON_CHECKOUT_ENABLED, [TRUE, FALSE], ['Enabled', 'Disabled']);
+		$settings->add_dropdown_setting('Billing', 'Amazon', 'amazon_sandbox', 'Use Sandbox/Test Environment', 'Use Sandbox/Test Environment', AMAZON_SANDBOX, [FALSE, TRUE], ['Live Environment', 'Sandbox Test Environment']);
 		$settings->add_text_setting('Billing', 'Amazon', 'amazon_client_id', 'Client ID', 'Client ID', (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
 		$settings->add_text_setting('Billing', 'Amazon', 'amazon_seller_id', 'Seller ID', 'Seller ID', (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
 	}

@@ -1,12 +1,12 @@
 <?php
 	/**
-	* Amazon Functionality
-	*
-	* @author Joe Huss <detain@interserver.net>
-	* @copyright 2017
-	* @package MyAdmin
-	* @category Billing
-	*/
+	 * Amazon Functionality
+	 *
+	 * @author Joe Huss <detain@interserver.net>
+	 * @copyright 2017
+	 * @package MyAdmin
+	 * @category Billing
+	 */
 
 	function amazon_obtain_profile() {
 		$c = curl_init('https://api.amazon.com/auth/o2/tokeninfo?access_token='.urlencode($_REQUEST['access_token']));
@@ -22,7 +22,7 @@
 		}
 		// exchange the access token for user profile
 		$c = curl_init(AMAZON_SANDBOX_PROFILE_URL);
-		curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '. $_REQUEST['access_token']]);
+		curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '.$_REQUEST['access_token']]);
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
 		$r = curl_exec($c);
 		curl_close($c);
