@@ -21,7 +21,7 @@
 			exit;
 		}
 		// exchange the access token for user profile
-		$c = curl_init(AMAZON_SANDBOX_PROFILE_URL);
+		$c = curl_init('https://api.sandbox.amazon.com/user/profile');
 		curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '.$_REQUEST['access_token']]);
 		curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
 		$r = curl_exec($c);
