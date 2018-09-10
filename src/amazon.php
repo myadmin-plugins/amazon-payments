@@ -8,9 +8,10 @@
 	 * @category Billing
 	 */
 
-	function amazon_obtain_profile() {
+	function amazon_obtain_profile()
+	{
 		$c = curl_init('https://api.amazon.com/auth/o2/tokeninfo?access_token='.urlencode($_REQUEST['access_token']));
-		curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 		$r = curl_exec($c);
 		curl_close($c);
 		$d = json_decode($r);
@@ -23,7 +24,7 @@
 		// exchange the access token for user profile
 		$c = curl_init('https://api.sandbox.amazon.com/user/profile');
 		curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '.$_REQUEST['access_token']]);
-		curl_setopt($c, CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
 		$r = curl_exec($c);
 		curl_close($c);
 		$d = json_decode($r);
@@ -33,7 +34,8 @@
 	/**
 	 * @return string
 	 */
-	function amazon_addressbook_widget() {
+	function amazon_addressbook_widget()
+	{
 		return '<div id="addressBookWidgetDiv">
 </div>
 <script>
@@ -64,7 +66,8 @@ new OffAmazonPayments.Widgets.AddressBook({
 	/**
 	 * @return string
 	 */
-	function amazon_wallet_widget() {
+	function amazon_wallet_widget()
+	{
 		return '<div id="walletWidgetDiv">
 </div>
 <script>
