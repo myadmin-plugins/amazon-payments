@@ -1,5 +1,5 @@
 {
-	"name": "detain/myadmin-amazon-payments",
+	"name": "detain/amazon-payments",
 	"type": "myadmin-plugin",
 	"description": "Amazon handling plugin for MyAdmin",
 	"keywords": [
