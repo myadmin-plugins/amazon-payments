@@ -55,9 +55,9 @@ class Plugin
 	public static function getRequirements(GenericEvent $event)
 	{
 		$loader = $event->getSubject();
-		$loader->add_requirement('amazon_obtain_profile', '/../vendor/detain/amazon-payments/src/amazon.php');
-		$loader->add_requirement('amazon_wallet_widget', '/../vendor/detain/amazon-payments/src/amazon.php');
-		$loader->add_requirement('amazon_addressbook_widget', '/../vendor/detain/amazon-payments/src/amazon.php');
+		$loader->add_requirement('amazon_obtain_profile', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
+		$loader->add_requirement('amazon_wallet_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
+		$loader->add_requirement('amazon_addressbook_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 	}
 
 	/**
