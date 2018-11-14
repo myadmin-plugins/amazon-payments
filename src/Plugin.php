@@ -44,7 +44,7 @@ class Plugin
 		if ($GLOBALS['tf']->ima == 'admin') {
 			function_requirements('has_acl');
 			if (has_acl('client_billing')) {
-				$menu->add_link('admin', 'choice=none.abuse_admin', '/lib/webhostinghub-glyphs-icons/icons/development-16/Black/icon-spam.png', 'Amazon');
+				$menu->add_link('admin', 'choice=none.abuse_admin', '/lib/webhostinghub-glyphs-icons/icons/development-16/Black/icon-spam.png', __('Amazon'));
 			}
 		}
 	}
@@ -54,7 +54,10 @@ class Plugin
 	 */
 	public static function getRequirements(GenericEvent $event)
 	{
-		$loader = $event->getSubject();
+        /**
+         * @var \MyAdmin\Plugins\Loader $this->loader
+         */
+        $loader = $event->getSubject();
 		$loader->add_requirement('amazon_obtain_profile', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 		$loader->add_requirement('amazon_wallet_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 		$loader->add_requirement('amazon_addressbook_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
@@ -63,12 +66,15 @@ class Plugin
 	/**
 	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
 	 */
-	public static function getSettings(GenericEvent $event)
-	{
-		$settings = $event->getSubject();
-		$settings->add_radio_setting('Billing', 'Amazon', 'amazon_checkout_enabled', 'Enable Amazon Checkout', 'Enable Amazon Checkout', AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
-		$settings->add_dropdown_setting('Billing', 'Amazon', 'amazon_sandbox', 'Use Sandbox/Test Environment', 'Use Sandbox/Test Environment', AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
-		$settings->add_text_setting('Billing', 'Amazon', 'amazon_client_id', 'Client ID', 'Client ID', (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
-		$settings->add_text_setting('Billing', 'Amazon', 'amazon_seller_id', 'Seller ID', 'Seller ID', (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
+    public static function getSettings(GenericEvent $event)
+    {
+        /**
+         * @var \MyAdmin\Settings $settings
+         **/
+        $settings = $event->getSubject();
+		$settings->add_radio_setting(__('Billing'), __('Amazon'), 'amazon_checkout_enabled', __('Enable Amazon Checkout'), __('Enable Amazon Checkout'), AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
+		$settings->add_dropdown_setting(__('Billing'), __('Amazon'), 'amazon_sandbox', __('Use Sandbox/Test Environment'), __('Use Sandbox/Test Environment'), AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
+		$settings->add_text_setting(__('Billing'), __('Amazon'), 'amazon_client_id', __('Client ID'), __('Client ID'), (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
+		$settings->add_text_setting(__('Billing'), __('Amazon'), 'amazon_seller_id', __('Seller ID'), __('Seller ID'), (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
 	}
 }
