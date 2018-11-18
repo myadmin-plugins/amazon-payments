@@ -71,9 +71,9 @@ class Plugin
          * @var \MyAdmin\Settings $settings
          **/
         $settings = $event->getSubject();
-		$settings->add_radio_setting(__('Billing'), __('Amazon'), 'amazon_checkout_enabled', __('Enable Amazon Checkout'), __('Enable Amazon Checkout'), AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
-		$settings->add_dropdown_setting(__('Billing'), __('Amazon'), 'amazon_sandbox', __('Use Sandbox/Test Environment'), __('Use Sandbox/Test Environment'), AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
-		$settings->add_text_setting(__('Billing'), __('Amazon'), 'amazon_client_id', __('Client ID'), __('Client ID'), (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
-		$settings->add_text_setting(__('Billing'), __('Amazon'), 'amazon_seller_id', __('Seller ID'), __('Seller ID'), (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
+		$settings->add_radio_setting(_('Billing'), _('Amazon'), 'amazon_checkout_enabled', _('Enable Amazon Checkout'), _('Enable Amazon Checkout'), AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
+		$settings->add_dropdown_setting(_('Billing'), _('Amazon'), 'amazon_sandbox', _('Use Sandbox/Test Environment'), _('Use Sandbox/Test Environment'), AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
+		$settings->add_text_setting(_('Billing'), _('Amazon'), 'amazon_client_id', _('Client ID'), _('Client ID'), (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
+		$settings->add_text_setting(_('Billing'), _('Amazon'), 'amazon_seller_id', _('Seller ID'), _('Seller ID'), (defined('AMAZON_SELLER_ID') ? AMAZON_SELLER_ID : ''));
 	}
 }
