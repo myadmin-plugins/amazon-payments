@@ -43,8 +43,8 @@ class Plugin
 		$menu = $event->getSubject();
 		if ($GLOBALS['tf']->ima == 'admin') {
 			function_requirements('has_acl');
-            if (has_acl('client_billing')) {
-            }
+			if (has_acl('client_billing')) {
+			}
 		}
 	}
 
@@ -53,10 +53,10 @@ class Plugin
 	 */
 	public static function getRequirements(GenericEvent $event)
 	{
-        /**
-         * @var \MyAdmin\Plugins\Loader $this->loader
-         */
-        $loader = $event->getSubject();
+		/**
+		 * @var \MyAdmin\Plugins\Loader $this->loader
+		 */
+		$loader = $event->getSubject();
 		$loader->add_requirement('amazon_obtain_profile', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 		$loader->add_requirement('amazon_wallet_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
 		$loader->add_requirement('amazon_addressbook_widget', '/../vendor/detain/myadmin-amazon-payments/src/amazon.php');
@@ -65,12 +65,12 @@ class Plugin
 	/**
 	 * @param \Symfony\Component\EventDispatcher\GenericEvent $event
 	 */
-    public static function getSettings(GenericEvent $event)
-    {
-        /**
-         * @var \MyAdmin\Settings $settings
-         **/
-        $settings = $event->getSubject();
+	public static function getSettings(GenericEvent $event)
+	{
+		/**
+		 * @var \MyAdmin\Settings $settings
+		 **/
+		$settings = $event->getSubject();
 		$settings->add_radio_setting(_('Billing'), _('Amazon'), 'amazon_checkout_enabled', _('Enable Amazon Checkout'), _('Enable Amazon Checkout'), AMAZON_CHECKOUT_ENABLED, [true, false], ['Enabled', 'Disabled']);
 		$settings->add_dropdown_setting(_('Billing'), _('Amazon'), 'amazon_sandbox', _('Use Sandbox/Test Environment'), _('Use Sandbox/Test Environment'), AMAZON_SANDBOX, [false, true], ['Live Environment', 'Sandbox Test Environment']);
 		$settings->add_text_setting(_('Billing'), _('Amazon'), 'amazon_client_id', _('Client ID'), _('Client ID'), (defined('AMAZON_CLIENT_ID') ? AMAZON_CLIENT_ID : ''));
