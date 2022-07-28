@@ -1,42 +1,43 @@
 <?php
-	/**
-	 * Amazon Functionality
-	 *
-	 * @author Joe Huss <detain@interserver.net>
-	 * @copyright 2019
-	 * @package MyAdmin
-	 * @category Billing
-	 */
 
-	function amazon_obtain_profile()
-	{
-		$c = curl_init('https://api.amazon.com/auth/o2/tokeninfo?access_token='.urlencode($_REQUEST['access_token']));
-		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-		$r = curl_exec($c);
-		curl_close($c);
-		$d = json_decode($r);
-		if ($d->aud != 'YOUR-CLIENT-ID') {
-			// the access token does not belong to us
-			header('HTTP/1.1 404 Not Found');
-			echo 'Page not found';
-			exit;
-		}
-		// exchange the access token for user profile
-		$c = curl_init('https://api.sandbox.amazon.com/user/profile');
-		curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '.$_REQUEST['access_token']]);
-		curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-		$r = curl_exec($c);
-		curl_close($c);
-		$d = json_decode($r);
-		echo sprintf('%s %s %s', $d->name, $d->email, $d->user_id);
-	}
+    /**
+     * Amazon Functionality
+     *
+     * @author Joe Huss <detain@interserver.net>
+     * @copyright 2019
+     * @package MyAdmin
+     * @category Billing
+     */
 
-	/**
-	 * @return string
-	 */
-	function amazon_addressbook_widget()
-	{
-		return '<div id="addressBookWidgetDiv">
+    function amazon_obtain_profile()
+    {
+        $c = curl_init('https://api.amazon.com/auth/o2/tokeninfo?access_token='.urlencode($_REQUEST['access_token']));
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+        $r = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($r);
+        if ($d->aud != 'YOUR-CLIENT-ID') {
+            // the access token does not belong to us
+            header('HTTP/1.1 404 Not Found');
+            echo 'Page not found';
+            exit;
+        }
+        // exchange the access token for user profile
+        $c = curl_init('https://api.sandbox.amazon.com/user/profile');
+        curl_setopt($c, CURLOPT_HTTPHEADER, ['Authorization: bearer '.$_REQUEST['access_token']]);
+        curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+        $r = curl_exec($c);
+        curl_close($c);
+        $d = json_decode($r);
+        echo sprintf('%s %s %s', $d->name, $d->email, $d->user_id);
+    }
+
+    /**
+     * @return string
+     */
+    function amazon_addressbook_widget()
+    {
+        return '<div id="addressBookWidgetDiv">
 </div>
 <script>
 new OffAmazonPayments.Widgets.AddressBook({
@@ -61,14 +62,14 @@ new OffAmazonPayments.Widgets.AddressBook({
 }).bind("addressBookWidgetDiv");
 </script>
 ';
-	}
+    }
 
-	/**
-	 * @return string
-	 */
-	function amazon_wallet_widget()
-	{
-		return '<div id="walletWidgetDiv">
+    /**
+     * @return string
+     */
+    function amazon_wallet_widget()
+    {
+        return '<div id="walletWidgetDiv">
 </div>
 <script>
 new OffAmazonPayments.Widgets.Wallet({
@@ -88,4 +89,4 @@ new OffAmazonPayments.Widgets.Wallet({
 }).bind("walletWidgetDiv");
 </script>
 ';
-	}
+    }
