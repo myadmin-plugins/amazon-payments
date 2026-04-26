@@ -20,7 +20,7 @@ An Amazon Payments integration plugin for the [MyAdmin](https://github.com/detai
 - PHP >= 5.0
 - ext-soap
 - ext-curl
-- symfony/event-dispatcher ^5.0
+- symfony/event-dispatcher *@stable
 
 ## Installation
 
