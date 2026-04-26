@@ -24,7 +24,7 @@ composer validate
 
 - **Namespace**: `Detain\MyAdminAmazon\` → `src/` · Tests: `Detain\MyAdminAmazon\Tests\` → `tests/`
 - **Plugin entry**: `src/Plugin.php` — static class with `$name`, `$description`, `$help`, `$type = 'plugin'`
-- **Hooks**: `getHooks()` returns `['system.settings' => [Plugin::class, 'getSettings'], 'function.requirements' => [Plugin::class, 'getRequirements']]`
+- **Hooks**: `getHooks()` returns `['system.settings' => [__CLASS__, 'getSettings'], 'function.requirements' => [__CLASS__, 'getRequirements']]`
 - **Functions**: `src/amazon.php` — `amazon_obtain_profile()`, `amazon_wallet_widget()`, `amazon_addressbook_widget()`
 - **Tests**: `tests/PluginTest.php` · `tests/AmazonFunctionsTest.php` · `tests/FileStructureTest.php`
 - **Bootstrap**: `tests/bootstrap.php` — defines `_()` gettext stub
@@ -38,7 +38,7 @@ composer validate
 - Widget functions in `src/amazon.php` return raw HTML strings with inline `<script>` using `OffAmazonPayments.Widgets.*`
 - OAuth flow uses `curl_init` → `curl_setopt(CURLOPT_RETURNTRANSFER)` → `curl_exec` → `json_decode`
 - i18n: wrap user-facing strings in `_('string')` for gettext
-- `composer.json` type must stay `myadmin-plugin`; require `symfony/event-dispatcher ^5.0`
+- `composer.json` type must stay `myadmin-plugin`; require `symfony/event-dispatcher *@stable`
 
 ## Testing Conventions
 
@@ -72,3 +72,20 @@ If `caliber` is not found, tell the user: "This project uses Caliber for agent c
 Read `CALIBER_LEARNINGS.md` for patterns and anti-patterns learned from previous sessions.
 These are auto-extracted from real tool usage — treat them as project-specific rules.
 <!-- /caliber:managed:learnings -->
+
+<!-- caliber:managed:model-config -->
+## Model Configuration
+
+Recommended default: `claude-sonnet-4-6` with high effort (stronger reasoning; higher cost and latency than smaller models).
+Smaller/faster models trade quality for speed and cost — pick what fits the task.
+Pin your choice (`/model` in Claude Code, or `CALIBER_MODEL` when using Caliber with an API provider) so upstream default changes do not silently change behavior.
+
+<!-- /caliber:managed:model-config -->
+
+<!-- caliber:managed:sync -->
+## Context Sync
+
+This project uses [Caliber](https://github.com/caliber-ai-org/ai-setup) to keep AI agent configs in sync across Claude Code, Cursor, Copilot, and Codex.
+Configs update automatically before each commit via `/home/my/.nvm/versions/node/v24.15.0/bin/caliber refresh`.
+If the pre-commit hook is not set up, run `/setup-caliber` to configure everything automatically.
+<!-- /caliber:managed:sync -->
