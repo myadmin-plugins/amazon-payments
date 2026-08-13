@@ -1,6 +1,6 @@
 ---
 name: plugin-hook
-description: Adds a new event hook to src/Plugin.php following the getHooks() registration pattern. Creates the static handler method accepting GenericEvent $event and registers it in the hooks array. Use when user says 'add hook', 'new event', 'register listener', or adds a new MyAdmin event binding. Do NOT use for modifying src/amazon.php functions or adding Composer dependencies. NOTE: for a plugin's contract/behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
+description: Adds a new event hook to src/Plugin.php following the getHooks() registration pattern. Creates the static handler method accepting GenericEvent $event and registers it in the hooks array. Use when user says 'add hook', 'new event', 'register listener', or adds a new MyAdmin event binding. Do NOT use for modifying src/amazon.php functions or adding Composer dependencies. For a plugin's contract or behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
 ---
 <!-- myadmin-contract-harness-notice -->
 > ### ⚠️ Read this before the rest of the file

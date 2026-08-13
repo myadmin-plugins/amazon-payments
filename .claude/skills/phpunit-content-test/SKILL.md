@@ -1,6 +1,6 @@
 ---
 name: phpunit-content-test
-description: Writes a PHPUnit test class using the content-assertion pattern from `tests/AmazonFunctionsTest.php` — loads source via `file_get_contents()` in `setUpBeforeClass()` then asserts with `assertStringContainsString()`. Use when user says 'add test', 'write tests for', or adds new functions to `src/amazon.php`. Do NOT use for ReflectionClass-based structural tests (see `tests/PluginTest.php` pattern). NOTE: for a plugin's contract/behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
+description: Writes a PHPUnit test class using the content-assertion pattern from `tests/AmazonFunctionsTest.php` — loads source via `file_get_contents()` in `setUpBeforeClass()` then asserts with `assertStringContainsString()`. Use when user says 'add test', 'write tests for', or adds new functions to `src/amazon.php`. Do NOT use for ReflectionClass-based structural tests (see `tests/PluginTest.php` pattern). For a plugin's contract or behavioral tests (tests/ContractTest.php, the shared harness, composer myadmin:scaffold-tests) use the plugin-contract-tests skill instead — this skill's reflection-only guidance predates that harness.
 ---
 <!-- myadmin-contract-harness-notice -->
 > ### ⚠️ Read this before the rest of the file
